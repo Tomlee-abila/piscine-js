@@ -1,4 +1,4 @@
-const escapeStr = "\'\\\/\"\."
+const escapeStr = "`\\/\"."
 const arr = [4,2]
 const obj = {
     str: "Hello",
@@ -20,3 +20,5 @@ const nested = {
 Object.freeze(obj);
 Object.freeze(nested);
 Object.freeze(arr);
+Object.freeze(nested.obj);
+Object.freeze(nested.arr);
