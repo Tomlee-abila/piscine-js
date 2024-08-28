@@ -1,22 +1,15 @@
 function dogYears(planate, dogAge){
-    earthYear = 31,557,600
+    const earthYear = 31557600
 
-    switch (planate){
-        case  "earth":
-            return earthYear * 7 * 1 * dogAge
-        case  "mercury":
-            return earthYear * 7 * 0.2408467 * dogAge
-        case  "venus":
-            return earthYear * 7 * 0.61519726 * dogAge
-        case  "mars":
-            return earthYear * 7 * 1.8808158 * dogAge
-        case  "jupiter":
-            return earthYear * 7 * 11.862615 * dogAge
-        case  "saturn":
-            return earthYear * 7 * 29.447498 * dogAge
-        case  "uranus":
-            return earthYear * 7 * 84.016846 * dogAge
-        case  "neptune":
-            return earthYear * 7 * 164.79132 * dogAge
+    const planateAge={
+        earth: (dogAge/earthYear) * 7 * 1,
+        mercury: (dogAge/earthYear) * 7 * 0.2408467,
+        venus: (dogAge/earthYear) * 7 * 0.61519726,
+        mars: (dogAge/earthYear) * 7 * 1.8808158,
+        jupiter: (dogAge/earthYear) * 7 * 11.862615,
+        saturn: (dogAge/earthYear) * 7 * 29.447498,
+        uranus: (dogAge/earthYear) * 7 * 84.016846,
+        neptune: (dogAge/earthYear) * 7 * 164.79132
     }
+    return parseFloat(planateAge[planate].toFixed(2))
 }
