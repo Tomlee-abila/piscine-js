@@ -1,5 +1,5 @@
 function repeat(str, num){
-    let result = ""
+    var result = ""
     while (num > 0){
         result += str
         num -= 1
