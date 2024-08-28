@@ -1,4 +1,4 @@
-const is = {}
+// const is = {}
 is.num = (n) => typeof n == 'number' ? true : false
 is.nan = (n) => Number.isNaN(n)
 is.str = (n) => typeof n == 'string' ? true : false
