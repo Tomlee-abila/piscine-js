@@ -8,9 +8,9 @@ function indexOf(arr, value, optional = 0){
 }
 
 function lastIndexOf(arr, value, optional = arr.length-1){
-    for (let i = optional; i > 0; i--) { 
-        if (arr[i] === value){
-            return  i
+    for (let i = optional; i >= 0; i--) { 
+        if (arr[i] === value){            
+            return  i            
         }
     }
     return -1
@@ -25,4 +25,4 @@ function includes(arr, value, optional = 0){
     return false
 }
 
-console.log(includes(["hello", "there", "hellen", "how", "there", "are", "you"], "there", 5))
+console.log(lastIndexOf([6, 0, 0, 6], 6, 1))
