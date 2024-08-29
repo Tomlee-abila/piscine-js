@@ -1,4 +1,7 @@
 function slice(input, start, opEnd = input.length -1){
+    if (start < 0){
+        start = input.length + start
+    }
     if (Array.isArray(input)){
         let result = []
         for (let i = start; i <= opEnd; i++){
@@ -23,4 +26,4 @@ function slice(input, start, opEnd = input.length -1){
     
 }
 
-console.log(slice("Hello there", 2, 5))
+console.log(slice(["hello", "there", "sharon", "how", "have", "you", "been"], -2))
