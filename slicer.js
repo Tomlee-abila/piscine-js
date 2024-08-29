@@ -1,10 +1,10 @@
-function slice(input, start, opEnd = input.length -1){
+function slice(input, start, opEnd = input.length){
     if (start < 0){
         start = input.length + start
     }
     if (Array.isArray(input)){
         let result = []
-        for (let i = start; i <= opEnd; i++){
+        for (let i = start; i < opEnd; i++){
             if (i === start){
                 result.push(input[i])
             }else{
@@ -14,7 +14,7 @@ function slice(input, start, opEnd = input.length -1){
         return result
     }else{
         let result = ""
-        for (let i = start; i <= opEnd; i++){
+        for (let i = start; i < opEnd; i++){
             if (i === start){
                 result += input[i]
             }else{
@@ -26,4 +26,4 @@ function slice(input, start, opEnd = input.length -1){
     
 }
 
-console.log(slice(["hello", "there", "sharon", "how", "have", "you", "been"], -2))
+console.log(slice('abcdef', 0, 2))
