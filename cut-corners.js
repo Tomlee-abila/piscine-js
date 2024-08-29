@@ -57,10 +57,17 @@ function floor(num){
 }
 
 function trunc(num){
+    let exp = 0
     if (num == Infinity){
         return Infinity
     }
-    let exp = num - (modulo(num *10, 10)/10)
+    if (num > 0xfffffffff){
+        num -= 0xfffffffff
+        exp = num - (modulo(num *10, 10)/10)
+        exp += 0xfffffffff
+    }else{
+        exp = num - (modulo(num *10, 10)/10)
+    }
     return exp
 }
 
