@@ -45,6 +45,9 @@ function keepLast(str){
 }
 
 function keepFirstLast(str){
+    if (str.length <= 4){
+        return str
+    }
     let result = keepFirst(str)
     result += keepLast(str)
     return result
