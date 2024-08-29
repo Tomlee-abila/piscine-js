@@ -1,5 +1,5 @@
-function indexOf(arr, value){
-    for (let i = 0; i < arr.length; i++) { 
+function indexOf(arr, value, optional = 0){
+    for (let i = optional; i < arr.length; i++) { 
         if (arr[i] === value){
             return i
         }
@@ -7,18 +7,17 @@ function indexOf(arr, value){
     return -1
 }
 
-function lastIndexOf(arr, value){
-    let result = -1
-    for (let i = 0; i < arr.length; i++) { 
+function lastIndexOf(arr, value, optional = arr.length-1){
+    for (let i = optional; i > 0; i--) { 
         if (arr[i] === value){
-            result = i
+            return  i
         }
     }
-    return result
+    return -1
 }
 
-function includes(arr, value){
-    for (let i = 0; i < arr.length; i++) { 
+function includes(arr, value, optional = 0){
+    for (let i = optional; i < arr.length; i++) { 
         if (arr[i] === value){
             return true
         }
@@ -26,4 +25,4 @@ function includes(arr, value){
     return false
 }
 
-console.log(includes(["hello", "there", "hellen", "how", "there", "are", "you"], "thered"))
+console.log(includes(["hello", "there", "hellen", "how", "there", "are", "you"], "there", 5))
