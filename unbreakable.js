@@ -22,6 +22,12 @@ function split(str, subStr){
     let start = 0
     let word = ""
     let count = 0
+    if (subStr === ""){
+        for (let i = 0; i < str.length; i++){
+            result.push(str[i])
+        }
+        return result
+    }
     for (let i = 0; i < str.length; i++){
         if (str[i]===subStr[0]){
             if ((slice(str, i, subStr.length+i) === subStr) && i >= start){
@@ -65,4 +71,5 @@ let test = "hellorntherernwhenrnarernyourncoming"
 // console.log(join(split(test, "rn"), " "))
 // console.log(split('a b c', ' '))
 // console.log(split('ee,ff,g,', ','))
-console.log(split('rrrr', 'rr'))
+// console.log(split('rrrr', 'rr'))
+console.log(split('Riad', ''))
