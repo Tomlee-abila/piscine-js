@@ -2,7 +2,7 @@ const pyramid = (str, num) => {
     let result = ""
     let count = 0
     for (let i = num; i >= 1; i--){
-        for (let j= 1; j <= i; j++){
+        for (let j= 1; j < i; j++){
             result += " "            
         }
         for (let k = num-i; k >= 0; k--){
@@ -19,4 +19,6 @@ const pyramid = (str, num) => {
     return result
 }
 
-console.log(pyramid("*", 5))
+// console.log(pyramid("a", 5))
+// console.log("     a\n    aaa\n   aaaaa\n  aaaaaaa\n aaaaaaaaa")
+// console.log("    a\n   aaa\n  aaaaa\n aaaaaaa\naaaaaaaaa")
