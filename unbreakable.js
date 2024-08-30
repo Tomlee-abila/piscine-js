@@ -21,9 +21,11 @@ function split(str, subStr){
     let result = []
     let start = 0
     let word = ""
+    let count = 0
     for (let i = 0; i < str.length; i++){
         if (str[i]===subStr[0]){
-            if (slice(str, i, subStr.length+i) === subStr){
+            if ((slice(str, i, subStr.length+i) === subStr) && i >= start){
+                count +++
                 result.push(word)
                 start = i+subStr.length
                 word = ""
@@ -34,7 +36,9 @@ function split(str, subStr){
             if (i >= start){
                 word += str[i]
             }
-            result.push(word)
+            if (result.length === count){
+                result.push(word)
+            }
         }
         
         if (i >= start){
@@ -60,4 +64,5 @@ let test = "hellorntherernwhenrnarernyourncoming"
 
 // console.log(join(split(test, "rn"), " "))
 // console.log(split('a b c', ' '))
-console.log(split('ee,ff,g,', ','))
+// console.log(split('ee,ff,g,', ','))
+console.log(split('rrrr', 'rr'))
