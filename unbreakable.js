@@ -28,6 +28,10 @@ function split(str, subStr){
         }
         return result
     }
+    if (str === ""){
+        result.push(word)
+        return result
+    }
     for (let i = 0; i < str.length; i++){
         if (str[i]===subStr[0]){
             if ((slice(str, i, subStr.length+i) === subStr) && i >= start){
@@ -72,4 +76,5 @@ let test = "hellorntherernwhenrnarernyourncoming"
 // console.log(split('a b c', ' '))
 // console.log(split('ee,ff,g,', ','))
 // console.log(split('rrrr', 'rr'))
-console.log(split('Riad', ''))
+// console.log(split('Riad', ''))
+console.log(split('', 'Riad'))
