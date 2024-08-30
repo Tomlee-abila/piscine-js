@@ -12,7 +12,7 @@ function nasa(n){
         }else if (i%5 == 0){
             result += " SA"
         }else{
-            if (i == 0){
+            if (i == 1){
                 result += String(i)
             }else{
                 result += " "+String(i)
