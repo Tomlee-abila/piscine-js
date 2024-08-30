@@ -30,7 +30,7 @@ function split(str, subStr){
             }
             
         }
-        if (i == str.length-1 && word !== ""){
+        if (i == str.length-1){
             word += str[i]
             result.push(word)
         }
@@ -56,4 +56,5 @@ function join(arr, subStr){
 
 let test = "hellorntherernwhenrnarernyourncoming"
 
-console.log(join(split(test, "rn"), " "))
+// console.log(join(split(test, "rn"), " "))
+console.log(split('a b c', ' '))
