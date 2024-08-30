@@ -4,7 +4,9 @@ const triangle = (str, num) =>{
         for (let j= 0; j < i; j++){
             result += str
         }
-        result += "\n"
+        if (i !== num){
+            result += "\n"
+        }        
     }
     return result
 }
