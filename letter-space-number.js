@@ -1,5 +1,6 @@
 const letterSpaceNumber = (str) =>{
-    const reg = /([a-zA-Z_])[ ](\d{1})/g
+    const reg = /[a-z][ ]\b\d{1}\b/g
+    // const reg = /([a-zA-Z_])[ ]([\d{1}])/g
     const myArray = str.match(reg);
     return myArray
 }
