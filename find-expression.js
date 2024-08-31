@@ -1,5 +1,5 @@
-const add4 = '+4'
-const mul2 = '*2'
+// const add4 = '+4'
+// const mul2 = '*2'
 
 
 const findExpression = (num)=>{
