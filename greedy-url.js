@@ -11,4 +11,4 @@ const greedyQuery = (str) =>{
 }
 
 // const dataSet = "qqq http:// qqqq q qqqqq https://something.com/hello qqqqqqq qhttp://example.com/hello?you=something&something=you"
-console.log(greedyQuery(dataSet))
+// console.log(greedyQuery(dataSet))
