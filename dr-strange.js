@@ -27,7 +27,7 @@ function addWeek(Date){
     return arr1[actual_day]
 }
 
-console.log(addWeek(new Date('00001-31-01')))
+console.log(addWeek(new Date('0001-01-31')))
 
 function timeTravel(object){
 
