@@ -7,7 +7,7 @@ function addWeek(Date){
         "Wednesday",
         "Thursday",
         "Friday",
-        "Satarday"        
+        "Saturday"        
     ]
     var arr2 = [
         "secondSunday",
@@ -16,7 +16,7 @@ function addWeek(Date){
         "secondWednesday",
         "secondThursday",
         "secondFriday",
-        "secondSatarday"        
+        "secondSaturday"        
     ]
     var actual_day = Date.getDay()   
     var m_value = parseInt(Date.toString().match(reg)[0])%14
@@ -28,6 +28,7 @@ function addWeek(Date){
 }
 
 console.log(addWeek(new Date('0001-01-31')))
+console.log(addWeek(new Date('0001-01-06')) === 'Saturday')
 
 function timeTravel(object){
 
