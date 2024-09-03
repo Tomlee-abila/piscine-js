@@ -1,6 +1,6 @@
 function addWeek(Date){
     var reg = /\d{2}/
-    arr1 = [
+    var arr1 = [
         "Sunday",
         "Monday",
         "Tuesday",
@@ -9,7 +9,7 @@ function addWeek(Date){
         "Friday",
         "Satarday"        
     ]
-    arr2 = [
+    var arr2 = [
         "secondSunday",
         "secondMonday",
         "secondTuesday",
