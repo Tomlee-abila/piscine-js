@@ -1,4 +1,7 @@
 function isValid(date){
+    if (new Date(date) == "Invalid Date"){
+        return false
+    }
     return date instanceof Date
 }
 
@@ -14,5 +17,5 @@ function isFuture(date){
 function isPast(date){
     return isValid(date) && isBefore(date, Date.now())
 }
-console.log(isPast(new Date("2020-05-29 21:25:22")))
-// console.log(isValid('2016-01-01'))
+// console.log(isPast(new Date("2020-05-29 21:25:22")))
+console.log(isValid(new Date('')))
