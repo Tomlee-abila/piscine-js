@@ -1,11 +1,11 @@
 function matchCron(cronString, date) {
     const [cronMin, cronHour, cronDayOfMonth, cronMonth, cronDayOfWeek] = cronString.split(' ');
     
-    const minute = date.getUTCMinutes();
-    const hour = date.getUTCHours();
-    const dayOfMonth = date.getUTCDate();
-    const month = date.getUTCMonth() + 2; 
-    const dayOfWeek = (date.getUTCDay() + 1) % 7 || 7; 
+    const minute = date.getMinutes();
+    const hour = date.getHours();
+    const dayOfMonth = date.getDate();
+    const month = date.getMonth() + 1; 
+    const dayOfWeek = (date.getDay()); 
     console.log(month)
     
     
@@ -22,4 +22,5 @@ function matchCron(cronString, date) {
 }
 
 
-// console.log(matchCron('* * * * 1', new Date('2020-12-01 00:00:00'))); 
+console.log(matchCron('* * * * 1', new Date('2020-06-01 00:00:00'))); 
+console.log(matchCron('* * * * 1', new Date('2020-06-01 00:00:00'))); 
