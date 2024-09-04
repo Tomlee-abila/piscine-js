@@ -17,8 +17,11 @@ function firstDayWeek(wNumber, year) {
     var dayOfWeek = weekOneDate.getDay(); 
     var daysToAdd = (1 - dayOfWeek + 7) % 7;
     var sub = 1
-    if (Number(year) < 1970 || daysToAdd == 0){
+    if (Number(year) < 1970){
         sub = 2
+    }
+    if (daysToAdd == 0){
+        sub = 1
     }
     var firstMonday = new Date(weekOneDate.setDate(weekOneDate.getDate() + daysToAdd));
     console.log(" first monday:", firstMonday.toString())
@@ -39,6 +42,6 @@ function firstDayWeek(wNumber, year) {
 }
 
 
-console.log(firstDayWeek(2, '1000')); 
+console.log(firstDayWeek(2, '0001')); 
 
 
