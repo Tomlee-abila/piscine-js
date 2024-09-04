@@ -16,12 +16,13 @@ function firstDayWeek(wNumber, year) {
     
     var dayOfWeek = weekOneDate.getDay(); 
     var daysToAdd = (1 - dayOfWeek + 7) % 7;
-    var firstMonday = new Date(weekOneDate.setDate(weekOneDate.getDate() + daysToAdd));
-    console.log(" first monday:", firstMonday.toString())
     var sub = 1
-    if (Number(year) < 1970){
+    if (Number(year) < 1970 || daysToAdd == 0){
         sub = 2
     }
+    var firstMonday = new Date(weekOneDate.setDate(weekOneDate.getDate() + daysToAdd));
+    console.log(" first monday:", firstMonday.toString())
+    
     var add = (wNumber - sub) * 7 * millisecondsPerDay
     var dateOfWeek = new Date(firstMonday.getTime() + add);
     console.log("       Answer:",dateOfWeek.toString())
@@ -38,6 +39,6 @@ function firstDayWeek(wNumber, year) {
 }
 
 
-console.log(firstDayWeek(52, '1000')); 
+console.log(firstDayWeek(2, '1000')); 
 
 
