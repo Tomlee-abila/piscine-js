@@ -5,6 +5,6 @@ const isLastDayOfMonth = (date) => {
     var onday = 86400000
     var orMonth = date.getMonth()
     var newDate = new Date(date.getTime()+onday)
-    return newDate.getMonth() == orMonth
+    return !(newDate.getMonth() !== orMonth)
 
 }
