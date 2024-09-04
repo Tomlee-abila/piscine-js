@@ -4,7 +4,12 @@ const isLeapYear = (date) => date.getFullYear()%4 == 0
 const isLastDayOfMonth = (date) => {
     var onday = 86400000
     var orMonth = date.getMonth()
+    console.log(orMonth)
     var newDate = new Date(date.getTime()+onday)
-    return !(newDate.getMonth() !== orMonth)
+    var newMonth = newDate.getMonth()
+    console.log(newMonth)
+    return !(orMonth === newMonth)
 
 }
+
+// console.log(isLastDayOfMonth(new Date('2020-02-28')))
