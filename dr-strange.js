@@ -1,35 +1,32 @@
-function addWeek(Date){
-    var reg = /\d{2}/
-    var arr1 = [
-        "Sunday",
+function addWeek(inputDate){
+    const milliseconds = inputDate - new Date('0001-01-01')
+    const millisecondsPerDay = 1000 * 60 * 60 * 24;
+    const days = milliseconds / millisecondsPerDay;
+    const day = days%14
+    var arr1 = [        
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
-        "Saturday"        
-    ]
-    var arr2 = [
-        "secondSunday",
+        "Saturday",
+        "Sunday",        
         "secondMonday",
         "secondTuesday",
         "secondWednesday",
         "secondThursday",
         "secondFriday",
-        "secondSaturday"        
+        "secondSaturday",
+        "secondSunday"                 
     ]
-    var actual_day = Date.getDay()   
-    var m_value = parseInt(Date.toString().match(reg)[0])%14
-    if (m_value > 7 || m_value == 0){
-        return arr2[actual_day]
-    }
-    // console.log(actual_day)
-    return arr1[actual_day]
+    console.log(day)
+    return arr1[day]
 }
 
-console.log(new Date('Fri May 29 2020 21:22:22 GMT+0100 (Western European Summer Time)'))
-console.log(new Date('2020-05-29 23:25:22'))
-console.log(addWeek(new Date('0001-01-14')) === 'secondSunday')
+// console.log(new Date('Fri May 29 2020 21:22:22 GMT+0100 (Western European Summer Time)'))
+// console.log(new Date('2020-05-29 23:25:22'))
+// console.log(addWeek(new Date('2020-05-29')))
+// console.log(new Date('2020-05-29 23:25:22').toString())
 
 function timeTravel(object){
 
