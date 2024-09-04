@@ -17,7 +17,7 @@ function firstDayWeek(wNumber, year) {
     var dateOfWeek = new Date(firstMonday);
     dateOfWeek.setDate(firstMonday.getDate() + (wNumber - 1) * 7);
     if (wNumber == 1){
-        dateOfWeek = weekOneDate
+        dateOfWeek = new Date(`${year}-01-01`);
     }
     
     var day = String(dateOfWeek.getDate()).padStart(2, '0');
