@@ -6,16 +6,14 @@ function firstDayWeek(wNumber, year) {
 
     
     var weekOneDate = new Date(`${year}-01-01`);
-    console.log(weekOneDate.toString())
 
     
     var dayOfWeek = weekOneDate.getDay(); 
     var daysToAdd = (1 - dayOfWeek + 7) % 7;
     var firstMonday = new Date(weekOneDate.setDate(weekOneDate.getDate() + daysToAdd));
-    console.log(firstMonday.toString())
     
     var dateOfWeek = new Date(firstMonday);
-    dateOfWeek.setDate(firstMonday.getDate() + (wNumber - 1) * 7);
+    dateOfWeek.setDate(firstMonday.getDate() + (wNumber - 2) * 7);
     if (wNumber == 1){
         dateOfWeek = new Date(`${year}-01-01`);
     }
@@ -24,9 +22,9 @@ function firstDayWeek(wNumber, year) {
     var month = String(dateOfWeek.getMonth() + 1).padStart(2, '0');
     var yearFormatted = dateOfWeek.getFullYear();
     
-
+    console.log(dateOfWeek)
     return `${day}-${month}-${yearFormatted}`;
 }
 
 
-console.log(firstDayWeek(1, '1000')); 
+console.log(firstDayWeek(52, '1000')); 
