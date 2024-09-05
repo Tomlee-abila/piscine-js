@@ -34,7 +34,7 @@ const tempForecasts = (arrOb) => {
     var newArrOb = trimTemp(arrOb)
 
     return newArrOb.map((Ob) => {
-        return String(Math.floor(((Number(Ob.temperature.slice(0, Ob.temperature.length-2))-32)*(5/9)))) + `°Celsius in ${Ob.city}, ${Ob.state.charAt(0)+Ob.state.slice(1)}`
+        return String(Math.floor(((Number(Ob.temperature.slice(0, Ob.temperature.length-2))-32)*(5/9)))) + `°Celsius in ${Ob.city}, ${Ob.state[0].toUpperCase()+Ob.state.slice(1)}`
     })
 }
 
