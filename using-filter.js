@@ -42,4 +42,4 @@ const hasVowel = (str) =>{
     }
     return false
 }
-const multiFilter = (arrOb) => arrOb.filter((Ob) => (Ob.capital.length >= 8 && hasVowel(Ob.name[0]) && hasVowel(Ob.tag) && Ob.region) != "South")
+const multiFilter = (arrOb) => arrOb.filter((Ob) => (Ob.capital.length >= 8 && !hasVowel(Ob.name[0]) && hasVowel(Ob.tag) && Ob.region) != "South")
