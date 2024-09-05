@@ -1,6 +1,21 @@
 const citiesOnly = (arrOb) => arrOb.map((ob)=> ob.city)
 
-const upperCasingStates = (arrStr) => arrStr.map((str) => str.charAt(0).toUpperCase() + str.slice(1))
+const upperCasingStates = (arrStr) => arrStr.map((str) => {
+    // str.charAt(0).toUpperCase() + str.slice(1)
+    let result = ""
+    for (let i = 0; i < str.length; i++){
+        if (i == 0){
+            result += str[i].toUpperCase()
+        }else if (str[i] == " "){
+            result += str[i]
+            result += str[i+1].toUpperCase()
+            i++
+        }else{
+            result += str[i]
+        }
+    }
+    return result
+})
 // console.log(upperCasingStates(["hello", "there", "how", "are", "you"]))
 
 const fahrenheitToCelsius = (arrF) => arrF.map((F) => String(Math.floor(((Number(F.slice(0, F.length-2))-32)*(5/9)))) + "°C")
@@ -23,11 +38,43 @@ const tempForecasts = (arrOb) => {
     })
 }
 
-console.log(tempForecasts([
-    {
-      city: 'Pasadena',
-      temperature: ' 101 °F',
-      state: 'california',
-      region: 'West',
-    },
-  ]))
+// console.log(tempForecasts([
+//     {
+//       city: 'Pasadena',
+//       temperature: ' 101 °F',
+//       state: 'california',
+//       region: 'West',
+//     },
+//   ]))
+
+// arr = [
+//     'Alabama',
+//     'New Jersey',
+//     'Alaska',
+//     'New York',
+//     'California',
+//     'New Hampshire',
+//     'Ohio',
+//     'Texas',
+//     'West Virginia',
+//   ]
+
+// arr2 = upperCasingStates([
+//   'Alabama',
+//   'New Jersey',
+//   'Alaska',
+//   'New York',
+//   'California',
+//   'New Hampshire',
+//   'Ohio',
+//   'Texas',
+//   'West Virginia',
+// ])
+
+// for (let i = 0; i < arr.length; i++){
+//     if (arr[i] != arr2[i]){
+//         console.log(arr[i], arr2[i])
+//     }
+// }
+// console.log(arr)
+// console.log(arr2)
