@@ -1,8 +1,8 @@
 const flow = (...funcs) => {
     return (...args) => {
         return funcs.reduce((acc, func) => {
-            if (Array.isArray(acc)) {
-                return func(...acc);
+            if (typeof func !== 'function') {
+                throw new TypeError('All arguments must be functions');
             }
             return func(acc);
         }, args);
