@@ -6,6 +6,7 @@ const filter = (arr, func) => {
             result.push(arr[i])
         }
     }
+    return result
 }
 
 const reject = (arr, func) => {
@@ -16,6 +17,7 @@ const reject = (arr, func) => {
             result.push(arr[i])
         }
     }
+    return result
 }
 
 const partition = (arr, func) => {
