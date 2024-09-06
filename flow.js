@@ -1,5 +1,10 @@
 const flow = (...funcs) => {
-    return (initialValue) => {
-        return funcs.reduce((acc, func) => func(acc), initialValue);
+    return (...args) => {
+        return funcs.reduce((acc, func) => {
+            if (Array.isArray(acc)) {
+                return func(...acc);
+            }
+            return func(acc);
+        }, args);
     };
 };
