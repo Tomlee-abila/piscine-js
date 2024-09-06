@@ -30,7 +30,7 @@ const reduceRight = (arr, func, accumulator = undefined) =>{
     }
     
     for (let i=arr.length-1; i>=0; i--){
-        if(accumulator == undefined && i == arr[arr.length-1]){
+        if(accumulator == undefined && i == arr.length-1){
             accumulator = arr[i]
             i--
         }
@@ -38,3 +38,5 @@ const reduceRight = (arr, func, accumulator = undefined) =>{
     }
     return accumulator
 }
+
+// console.log(reduceRight([ 3, 10, 26, 0 ],func=(num, ac) => num+ac))
