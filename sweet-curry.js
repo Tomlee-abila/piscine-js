@@ -15,7 +15,9 @@ const add3 = (a) =>{
 const sub4 =(a) =>{
     return (b) =>{
         return (c) => {
-            return a-b-c
+            return (d) => {
+                return a-b-c-d
+            }
         }
     }
 }
