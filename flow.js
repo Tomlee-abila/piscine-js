@@ -1,10 +1,8 @@
-const flow = (...funcs) => {
+const flow = (funcs) => {
     return (...args) => {
-        return funcs.reduce((acc, func) => {
-            if (typeof func !== 'function') {
-                throw new TypeError('All arguments must be functions');
-            }
-            return func(acc);
-        }, args);
+        if (args.length >1){
+            args =[funcs[0](...args)]
+        }
+        return funcs.reduce((acc, func) => func(acc), args[0]);
     };
 };
