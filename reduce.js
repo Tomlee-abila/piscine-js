@@ -24,6 +24,7 @@ const reduce = (arr, func, accumulator = undefined) =>{
 }
 
 const reduceRight = (arr, func, accumulator = undefined) =>{
+    console.log(arr)
     if (arr.length === 0) {
         return accumulator
     }
