@@ -7,8 +7,9 @@ export const build = (amount) => {
         }        
         let brick = document.createElement("div")
         brick.id = `brick-${count}`
-        if ((count+1)%3 == 0){
-            brick.dataset.faundation = true
+        brick.innerHTML = `${count}`
+        if ((count)%3 == 2){
+            brick.dataset.foundation = true
         }
         document.body.append(brick) 
     },100)
@@ -18,7 +19,7 @@ export const repair = (...id) => {
         let brick = document.getElementById(`${id[i]}`)
         console.log(`${id[i]}`,brick)
         if (brick){
-            if(brick.dataset.faundation == "true"){
+            if(brick.dataset.foundation == "true"){
                 console.log("yes")
                 brick.dataset.repaired = "in progress"
             }else{
