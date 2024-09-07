@@ -1,5 +1,4 @@
 export const getArchitects = () =>{
-    // console.log("tom, start", document.getElementsByTagName("*"),"tom end")
     return [Array.from(document.getElementsByTagName("a")), document.querySelectorAll("body > :not(a)")]
 }
 
@@ -12,5 +11,5 @@ export const getActive = () => {
 }
 
 export const getBonannoPisano = () => {
-    return [document.querySelector('body #BonannoPisano'),document.querySelectorAll('body .classical.active :not(#BonannoPisano)')]
+    return [document.querySelector('body .classical.active#BonannoPisano'),document.querySelectorAll('body .classical.active:not(#BonannoPisano)')]
 }
