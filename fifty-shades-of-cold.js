@@ -12,18 +12,18 @@ export const generateClasses = () =>{
 }
 
 export const generateColdShades = () =>{
-    for (let i=0; i<colors.length;i++){
+    let shades = ["blue", "turquoise", "green", "cyan", "navy", "purple"]
+    let arr = colors.filter(color => shades.some(shade => color.includes(shade)))
+    for (let i=0; i<arr.length;i++){
         let div = document.createElement("div")
-        div.className = colors[i]
-        div.innerHTML = colors[i]
+        div.className = arr[i]
+        div.innerHTML = arr[i]
         document.body.append(div)
     }
 }
 
 export const choseShade = (shade)=>{
     let divs = document.getElementsByTagName("div")
-    console.log(shade)
-    console.log(divs)
     for (let i=0; i<divs.length;i++){
         divs[i].className = shade
     }
