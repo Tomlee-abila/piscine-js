@@ -6,7 +6,7 @@ export const pimp = () => {
     
     if (element.className == "button"){
         element.classList.add(styles[0])
-        rev = false 
+        // rev = false 
         return
     }
     if (rev){
@@ -19,6 +19,6 @@ export const pimp = () => {
     }else{
         rev = true
     }    
-    console.log(element)
+    console.log(element.classList)
     counter++
 }
