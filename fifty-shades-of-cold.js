@@ -12,7 +12,7 @@ export const generateClasses = () =>{
 }
 
 export const generateColdShades = () =>{
-    let shades = ["blue", "turquoise", "green", "cyan", "navy", "purple"]
+    let shades = ["aqua","blue", "turquoise", "green", "cyan", "navy", "purple"]
     let arr = colors.filter(color => shades.some(shade => color.includes(shade)))
     for (let i=0; i<arr.length;i++){
         let div = document.createElement("div")
