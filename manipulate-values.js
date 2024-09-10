@@ -20,13 +20,13 @@ const mapValues = (Obj, func)=>{
     return result
 }
 
-const reduceValues = (Obj, func) =>{
-    let result = 0
+const reduceValues = (Obj, func, op = undefined) =>{
+    let result = op
     let arr = Object.entries(Obj)
     let count = 0
 
     arr.forEach(([key, value]) =>{
-        if (count == 0){
+        if (count == 0 && op === undefined){
             result = value
         }else{
             result = func(result, value)
@@ -40,5 +40,6 @@ const reduceValues = (Obj, func) =>{
 // console.log(filterValues(nutrients, (nutrient) => nutrient <= 12))
 // console.log(mapValues(nutrients, (v) => v+1))
 // console.log(reduceValues(nutrients, (acc, cr) => acc + cr))
+// console.log(reduceValues({ a: 1, b: 2, c: 3 }, (acc, cr) => acc + cr, 3))
 
 
