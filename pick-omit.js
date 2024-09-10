@@ -1,0 +1,2 @@
+const pick = (obj, arrStr) => Object.fromEntries(obj).filter(([key, value]) => Array.isArray(arrStr)?arrStr.contains(key): arrStr == key)
+const omit = (obj, arrStr) => Object.fromEntries(obj).filter(([key, value]) => Array.isArray(arrStr)? !(arrStr.contains(key)): arrStr != key)
