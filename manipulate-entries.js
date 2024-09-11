@@ -3,7 +3,7 @@ const filterEntries = (Obj, func) =>{
     let arr = Object.entries(Obj)
 
     arr.forEach(([key, value]) => {
-        if(func(key, value)){
+        if(func([key, value])){
             result[key] = value
         }
     })
