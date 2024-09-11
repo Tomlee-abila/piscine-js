@@ -20,21 +20,17 @@ const mapEntries = (Obj, func)=>{
     return result
 }
 
-const reduceEntries = (Obj, func, op = undefined) =>{
-    let result = op
-    let arr = Object.entries(Obj)
-    let count = 0
-
-    arr.forEach(([key, value]) =>{
-        if (count == 0 && op === undefined){
-            result = value
-        }else{
-            result = func(result, value)
-        }
-        count++
-    })
-    return result
+function reduceEntries(obj, reducer, initialValue) {
+    let accumulator = initialValue;
+    const entries = Object.entries(obj);
+    
+    for (const [key, value] of entries) {
+      accumulator = reducer(accumulator, [key, value]);
+    }
+    
+    return accumulator;
 }
+  
 
 const filterValues = (Obj, func) =>{
     let result = {}
