@@ -1,3 +1,41 @@
+const filterEntries = (Obj, func) =>{
+    let result = {}
+    let arr = Object.entries(Obj)
+
+    arr.forEach(([key, value]) => {
+        if(func(key, value)){
+            result[key] = value
+        }
+    })
+    return result
+}
+
+const mapEntries = (Obj, func)=>{
+    let result = {}
+    let arr = Object.entries(Obj)
+
+    arr.forEach(([key, value]) =>{
+        result[Object.entries(func(key, value))[0]] = Object.entries(func(key, value))[1]
+    })
+    return result
+}
+
+const reduceEntries = (Obj, func, op = undefined) =>{
+    let result = op
+    let arr = Object.entries(Obj)
+    let count = 0
+
+    arr.forEach(([key, value]) =>{
+        if (count == 0 && op === undefined){
+            result = value
+        }else{
+            result = func(result, value)
+        }
+        count++
+    })
+    return result
+}
+
 const filterValues = (Obj, func) =>{
     let result = {}
     let arr = Object.entries(Obj)
