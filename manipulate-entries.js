@@ -75,7 +75,7 @@ const totalCalories = obj =>{
     obj3.forEach(object =>{
         result += Object.entries(filterKeys(object[1], key => key == "calories"))[0][1]*obj1[object[0]]
     })
-    return result
+    return parseFloat(result.toFixed(1));
 } 
 
 const lowCarbs = obj => filterValues(obj, (key, value) => ((value/100)*nutritionDB[key].carbs) < 50)
