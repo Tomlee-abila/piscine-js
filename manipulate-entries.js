@@ -15,7 +15,7 @@ const mapEntries = (Obj, func)=>{
     let arr = Object.entries(Obj)
 
     arr.forEach(([key, value]) =>{
-        result[func(key, value)[0]] = func(key, value)[1]
+        result[func([key, value])[0]] = func([key, value])[1]
     })
     return result
 }
