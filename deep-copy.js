@@ -1,7 +1,16 @@
 const deepCopy = (obj) =>{
     if (obj.constructor == Array){
-        return [...obj]
+        let result = []
+
+        obj.forEach(arr => result.push(arr))
+        return result
     }else{
-        return {...obj}
+        let result = {}
+        let arr = Object.entries(obj)
+
+        arr.forEach(([key, value]) => result[key] = value)
+        return result
     }
 }
+
+// console.log(deepCopy({2:3,4:5,7:6}))
