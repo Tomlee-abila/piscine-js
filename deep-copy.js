@@ -1,55 +1,28 @@
-const deepCopy = (obj) =>{
-    if (obj == undefined || obj == null || (obj.constructor !== Array || obj.constructor !== Object)){
-        return obj
+const deepCopy = (obj) => {
+    if (obj === null || typeof obj !== 'object') {
+        return obj; // Return the value if obj is not an object
     }
-    if (obj.constructor == Array){
-        let result = []
-        obj.forEach(arr => {
-            let arrR
-            if (arr == undefined){
-                result.push(arr)
-            }else{
-                switch(arr.constructor){                
-                    case Array:
-                        arrR = deepCopy(arr)
-                       break
-                    case Object:
-                        arrR = deepCopy(arr)
-                        break
-                    default:
-                        arrR = arr
-                }
-                result.push(arrR)
-            }
-            
-        })
-        return result
-    }else{
-        let result = {}
-        let arr = Object.entries(obj)
-        
-        arr.forEach(([key, value]) => {
-            let valuer = value
-            if (value == undefined){
-                result[key] = valuer
-            }else{
-                switch(value.constructor){
-                    case Array:
-                    valuer = deepCopy(value)
-                    break
-                    case Object:
-                        valuer = deepCopy(value)
-                        break
-                    default:
-                        valuer = value
-                }
-                result[key] = valuer
-            }
-            
-        })
-        return result
+
+    if (Array.isArray(obj)) {
+        return obj.map(item => deepCopy(item)); // Recursively copy array items
     }
-}
+
+    if (obj instanceof Date) {
+        return new Date(obj); // Handle Date objects
+    }
+
+    if (obj instanceof RegExp) {
+        return new RegExp(obj); // Handle RegExp objects
+    }
+
+    const copiedObj = {};
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            copiedObj[key] = deepCopy(obj[key]); // Recursively copy object properties
+        }
+    }
+    return copiedObj;
+};
 // console.log(deepCopy({2:3,4:5,7:6}))
 // const r = Math.random()
 //   const obj = [r, Object.freeze([r, Object.freeze([r])])]
@@ -58,4 +31,4 @@ const deepCopy = (obj) =>{
 //   console.log(obj)
 // //   eq(copy, obj)
 //   console.log(obj[1][1] === obj[1][1])
-// console.log(deepCopy(2))
+// console.log(deepCopy({ user: 'mika', age: 37 }))
