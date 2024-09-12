@@ -86,7 +86,7 @@ const mapAverage = (obj) => {
     
     return mapCurry(([key, value]) => {
         
-        let avarage = (value.pilotingScore + value.shootingScore)
+        let avarage = ((value.pilotingScore + value.shootingScore)/2)
         value.averageScore = avarage
         return [key, value]
      })(obj)
