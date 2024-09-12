@@ -2,10 +2,8 @@ const defaultCurry = (obj) => (obj1) =>{
     let result = {...obj}
     let arr = Object.entries(obj1)
 
-    arr.forEach(([key, value]) =>{
-        if (result[key] !== undefined){
-            result[key] = value
-        }
+    arr.forEach(([key, value]) =>{        
+        result[key] = value        
     })
     return result
 }
@@ -20,6 +18,9 @@ const defaultCurry = (obj) => (obj1) =>{
 //     requestMethod: 'GET'
 //   })
 //   )
+// console.log(defaultCurry({ http: 403, age: 0, connection: 'close' })({http: 200, age: 30, connection: 'keep-alive',  content_type: 'text/css',}))
+//   { http: 200, age: 30, connection: 'keep-alive', content_type: 'text/css' },
+
 
 const mapCurry = (func) => (obj) =>{
     let result = {}
