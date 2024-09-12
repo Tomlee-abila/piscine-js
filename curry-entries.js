@@ -79,8 +79,8 @@ const reduceScore =(obj, accu = 0)=>{
 // console.log(reduceScore(personnel, 0))
 // console.log(reduceScore(personnel, 420))
 
-const filterForce = (obj) => filterCurry(([key, value]) => value.shootingScore >= 80)(obj)
-//console.log(filterForce(personnel))
+const filterForce = (obj) => filterCurry(([key, value]) => (value.shootingScore >= 80 && value.isForceUser == true))(obj)
+// console.log(filterForce(personnel))
 
 const mapAverage = (obj) => {
     
