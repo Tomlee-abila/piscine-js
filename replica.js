@@ -1,31 +1,27 @@
 const is = {
-    arr: Array.isArray,
-    obj: (n) => n && typeof n === 'object' && !(n instanceof RegExp),
+    arr: (n) => Array.isArray(n),
+    obj: (n) => typeof n === 'object' && n !== null && !(n instanceof RegExp) && !Array.isArray(n),
     fun: (n) => typeof n === 'function'
 };
 
 function replica(target, ...sources) {
-    // Helper function to deeply copy or merge objects
-    const deepAssign = (target, source) => {
-        Object.keys(source).forEach(key => {
-            const srcValue = source[key];
-            const tgtValue = target[key];
-
-            if (is.obj(srcValue)) {
-                if (!is.obj(tgtValue)) {
+    sources.forEach((source) => {
+        Object.keys(source).forEach((key) => {
+            if (is.obj(source[key])) {
+                if (!is.obj(target[key])) {
                     target[key] = {};
                 }
-                deepAssign(target[key], srcValue);
-            } else if (is.arr(srcValue)) {
-                target[key] = srcValue.map(item => is.obj(item) || is.arr(item) ? replica({}, item) : item);
-            } else if (srcValue instanceof RegExp) {
-                target[key] = new RegExp(srcValue);
+                replica(target[key], source[key]);
+            } else if (is.arr(source[key])) {
+                target[key] = source[key].map(item => 
+                    is.obj(item) || is.arr(item) ? replica({}, item) : item
+                );
+            } else if (source[key] instanceof RegExp) {
+                target[key] = new RegExp(source[key]);
             } else {
-                target[key] = srcValue;
+                target[key] = source[key];
             }
         });
-    };
-
-    sources.forEach(source => deepAssign(target, source));
+    });
     return target;
 }
