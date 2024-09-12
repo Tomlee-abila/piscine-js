@@ -78,8 +78,8 @@ const totalCalories = obj =>{
     return parseFloat(result.toFixed(1));
 } 
 
-// const lowCarbs = obj => filterValues(obj, (key, value) => ((value/100)*nutritionDB[key].carbs) < 50)
-// const cartTotal = obj => mapValues(filterKeys(nutritionDB, (key, value) => obj[key] !== undefined), ([key, value]) => mapValues(value, ([key2, value2])=> Number(parseFloat(value2*(obj[key]/100)).toFixed(1))))
+const lowCarbs = obj => filterValues(obj, (key, value) => ((value/100)*nutritionDB[key].carbs) < 50)
+const cartTotal = obj => mapValues(filterKeys(nutritionDB, (key, value) => obj[key] !== undefined), ([key, value]) => mapValues(value, ([key2, value2])=> Number(parseFloat(value2*(obj[key]/100)).toFixed(1))))
 // const nutritionDB = {
 //     tomato:  { calories: 18,  protein: 0.9,   carbs: 3.9,   sugar: 2.6, fiber: 1.2, fat: 0.2   },
 //     vinegar: { calories: 20,  protein: 0.04,  carbs: 0.6,   sugar: 0.4, fiber: 0,   fat: 0     },
