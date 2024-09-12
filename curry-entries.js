@@ -73,10 +73,11 @@ const filterCurry = (func) =>(obj) =>{
 
 const reduceScore =(obj, accu = 0)=>{
     let accumulator = accu
-    Object.entries(obj).forEach(([key, value]) => accumulator = reduceCurry((acc,[key, value]) => (value.isForceUser)?acc+value.pilotingScore+value.shootingScore:acc)(obj,0))
+    accumulator += reduceCurry((acc,[key, value]) => (value.isForceUser)?acc+value.pilotingScore+value.shootingScore:acc)(obj,0)
     return accumulator
 }
 // console.log(reduceScore(personnel, 0))
+// console.log(reduceScore(personnel, 420))
 
 const filterForce = (obj) => filterCurry(([key, value]) => value.shootingScore >= 80)(obj)
 //console.log(filterForce(personnel))
