@@ -68,7 +68,7 @@ const filterKeys = (Obj, func) =>{
 }
 
 const totalCalories = obj =>{
-    let obj1 = mapValues(obj, (value)=> value/100)
+    let obj1 = mapValues(obj, ([key, value])=> value/100)
     let obj2 = filterKeys(nutritionDB, (key)=> Object.keys(obj1).includes(key))
     let result = 0
     let obj3 = Object.entries(obj2)
@@ -80,8 +80,6 @@ const totalCalories = obj =>{
 
 const lowCarbs = obj => filterValues(obj, (key, value) => ((value/100)*nutritionDB[key].carbs) < 50)
 const cartTotal = obj => mapValues(filterKeys(nutritionDB, (key, value) => obj[key] !== undefined), ([key, value]) => mapValues(value, ([key2, value2])=> parseFloat(value2*(obj[key]/100)).toFixed(1)))
-// const cartTotal1 = obj => filterKeys(nutritionDB, (key, value) => obj[key] !== undefined)
-// const cartTotal = obj => mapValues(obj, ([key, value]) => mapValues(value, ([key2, value2])=> value2*(obj[key]/100)))
 // const nutritionDB = {
 //     tomato:  { calories: 18,  protein: 0.9,   carbs: 3.9,   sugar: 2.6, fiber: 1.2, fat: 0.2   },
 //     vinegar: { calories: 20,  protein: 0.04,  carbs: 0.6,   sugar: 0.4, fiber: 0,   fat: 0     },
@@ -94,5 +92,5 @@ const cartTotal = obj => mapValues(filterKeys(nutritionDB, (key, value) => obj[k
 // }
 // const groceriesCart = { orange: 500, oil: 20, sugar: 480 }
 
-// console.log(cartTotal(groceriesCart))
+// console.log(totalCalories(groceriesCart))
   
