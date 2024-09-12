@@ -5,20 +5,20 @@ const deepCopy = (obj) =>{
             let arrR
             switch(arr.constructor){                
                 case Array:
-                   valuer = deepCopy(arr)
+                    arrR = deepCopy(arr)
                    break
                 case Object:
-                    valuer = deepCopy(arr)
+                    arrR = deepCopy(arr)
                     break
                 default:
                     arrR = arr
             }
-            result.push(arr)
+            result.push(arrR)
         })
         return result
     }else{
         let result = {}
-        let arr = Object.entries(arrR)
+        let arr = Object.entries(obj)
         arr.forEach(([key, value]) => {
             let valuer = value
             switch(value.constructor){
@@ -44,4 +44,4 @@ const deepCopy = (obj) =>{
 //   console.log(copy)
 //   console.log(obj)
 // //   eq(copy, obj)
-//   console.log(obj[1][1] !== copy[1][1])
+//   console.log(obj[1][1] === obj[1][1])
