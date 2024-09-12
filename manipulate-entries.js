@@ -79,4 +79,4 @@ const totalCalories = obj =>{
 } 
 
 const lowCarbs = obj => filterValues(obj, (key, value) => ((value/100)*nutritionDB[key].carbs) < 50)
-const cartTotal = obj => mapValues(filterKeys(nutritionDB, (key, value) => obj[key] !== undefined), ([key, value]) => (obj[key]/100)*value)
+const cartTotal = obj => mapValues(filterKeys(nutritionDB, (key, value) => obj[key] !== undefined), ([key, value]) => mapValues(value, ([key2, value2])=> value2*(obj[key]/100)))
