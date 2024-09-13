@@ -10,21 +10,32 @@ const debounce = (func, delay = 1000) =>{
     }
 }
 
-const opDebounce = (func, delay = 1000, option = {leading: false, trailing: true}) =>{
+const opDebounce = (func, delay = 1000, option = {leading: false}) =>{
     let timeout
-    let trigered = false
+    let invokeLeading = false
 
-    return (...args)=>{
-        if (option.leading && !trigered) func(...args), trigered = true
-
-        if (option.trailing){
-            clearTimeout(timeout)
-
-            timeout = setTimeout(() =>{
-                func(...args)
-            }, delay)
+    return (...args)=>{        
+        if (option.leading && !invokeLeading){
+            func(...args)
+            invokeLeading = true
         }
+        if (timeout) clearTimeout(timeout)                          
+
+        timeout = setTimeout(() =>{
+            func(...args)
+            timeout = undefined
+        }, delay)
     }
         
 }
 
+let count = 0
+
+const button = document.querySelector("#button")
+
+const update = opDebounce(count => console.log(count), 1000, {leading: true})
+
+button.addEventListener("click", e =>{
+    count ++
+    update(count)
+})
