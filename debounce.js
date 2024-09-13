@@ -14,9 +14,9 @@ const opDebounce = (func, delay = 1000, option = {leading: false, trailing: true
     let timeout
 
     return (...args)=>{
-        if (leading) func(...args)
+        if (option.leading) func(...args)
 
-        if (trailing){
+        if (option.trailing){
             clearTimeout(timeout)
 
             timeout = setTimeout(() =>{
