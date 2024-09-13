@@ -29,13 +29,13 @@ const opDebounce = (func, delay = 1000, option = {leading: false}) =>{
         
 }
 
-let count = 0
+// let count = 0
 
-const button = document.querySelector("#button")
+// const button = document.querySelector("#button")
 
-const update = opDebounce(count => console.log(count), 1000, {leading: true})
+// const update = opDebounce(count => console.log(count), 1000, {leading: true})
 
-button.addEventListener("click", e =>{
-    count ++
-    update(count)
-})
+// button.addEventListener("click", e =>{
+//     count ++
+//     update(count)
+// })
