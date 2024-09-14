@@ -15,7 +15,7 @@ const throttle = (func, delay = 1000) => {
 const opThrottle = (func, delay = 1000, option) =>{
     let shouldWait = false
     if (option.trailing == undefined && option.leading == true) option.trailing = true
-    // if (option.leading == undefined) option.leading = true
+    if (option.leading == undefined) option.leading = false
     return (...args) =>{
         if (shouldWait) return
 
