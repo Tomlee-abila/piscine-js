@@ -1,6 +1,5 @@
 const throttle = (func, delay = 1000) => {
     let shouldWait = false
-
     return (...args) =>{
         if (shouldWait) return
 
