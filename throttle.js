@@ -1,11 +1,13 @@
 const throttle = (func, delay = 1000) => {
-    let wait = false
+    let shouldWait = false
 
     return (...args) =>{
-        // if (!wait) func(...args), wait = true
+        if (shouldWait) return
+
+        func(...args)
+        shouldWait = true
         setTimeout(()=>{
-            func(...args)
-            wait = true
+            shouldWait = false
         }, delay)
     }
 }
@@ -13,3 +15,14 @@ const throttle = (func, delay = 1000) => {
 const opThrottle = () =>{
 
 }
+
+// let count = 0
+
+// const button = document.querySelector("#button")
+
+// const update = throttle(count => console.log(count), 1000, {leading: true})
+
+// button.addEventListener("click", e =>{
+//     count ++
+//     update(count)
+// })
