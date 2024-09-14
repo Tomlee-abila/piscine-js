@@ -12,10 +12,9 @@ const throttle = (func, delay = 1000) => {
     }
 }
 
-const opThrottle = (func, delay = 1000, option) =>{
+const opThrottle = (func, delay = 1000, option = {leading: false, trailing: false}) =>{
     let shouldWait = false
     if (option.trailing == undefined && option.leading == true) option.trailing = true
-    if (option.trailing == undefined && option.leading == undefined) option.trailing = false
     if (option.leading == undefined) option.leading = false
     return (...args) =>{
         if (shouldWait) return
@@ -36,7 +35,7 @@ const opThrottle = (func, delay = 1000, option) =>{
 
 // const button = document.querySelector("#button")
 
-// const update = opThrottle(() => console.log(count), 1000, {trailing: true})
+// const update = opThrottle(() => console.log(count), 1000)
 
 // button.addEventListener("click", e =>{
 //     count ++
