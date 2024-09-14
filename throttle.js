@@ -7,7 +7,7 @@ const throttle = (func, delay = 1000) => {
         func(...args)
         shouldWait = true
         setTimeout(()=>{
-            shouldWait = false
+            // shouldWait = false
         }, delay)
     }
 }
