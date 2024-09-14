@@ -2,7 +2,7 @@ const throttle = (func, delay = 1000) => {
     let wait = false
 
     return (...args) =>{
-        if (!wait) func(...args), wait = true
+        // if (!wait) func(...args), wait = true
         setTimeout(()=>{
             func(...args)
             wait = true
@@ -11,5 +11,5 @@ const throttle = (func, delay = 1000) => {
 }
 
 const opThrottle = () =>{
-    
+
 }
