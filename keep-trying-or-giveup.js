@@ -14,16 +14,22 @@ const retry = (count, callback) =>{
     }
 }
 
-const timeout = (delay, callback)=>{
-    return async (...args)=>{
-        const timeoutPromise = new Promise((_, reject)=>{
-            setTimeout(reject(new Error('timeout')), delay)
-        })
-        try{
-            return await Promise.race([timeoutPromise, callback(...args)])
-        }catch(error){
+function timeout(delay, callback) {
+    return async function(...args) {
+        const timeoutPromise = new Promise((_, reject) => 
+            setTimeout(() => reject(new Error('timeout')), delay)
+        );
+        
+        const callbackPromise = callback(...args);
+        
+        try {
+            return await Promise.race([callbackPromise, timeoutPromise]);
+        } catch (error) {
+            if (error.message === 'timeout') {
+                throw error; 
+            }
             throw error;
-        }        
-    }
+        }
+    };
 }
 
