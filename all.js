@@ -1,7 +1,7 @@
 const all = (obj)=>{
     values = Object.values(obj)
     keys = Object.keys(obj)
-    if (obj.length == 0)return obj
+    if (obj == {})return obj
     let t = "hello"
     result = {}
     for (let i = 0; i < values.length; i++){        
@@ -11,4 +11,4 @@ const all = (obj)=>{
 }
 
 // console.log(all({hello: ()=> "hello"}))
-// // console.log(all({}))
+// console.log(all({}))
