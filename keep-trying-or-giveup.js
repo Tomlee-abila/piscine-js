@@ -20,7 +20,7 @@ const timeout = (timeout, callback)=>{
             setTimeout(reject(new Error('timeout')), timeout)
         })
         try{
-            Promise.race([timeoutPromise, callback(...args)])
+            return await Promise.race([timeoutPromise, callback(...args)])
         }catch(error){
             throw error;
         }        
