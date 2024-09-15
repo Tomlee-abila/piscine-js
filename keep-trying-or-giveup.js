@@ -7,10 +7,23 @@ const retry = (count, callback) =>{
             }catch{
                 attempts++
                 if (attempts > count){
-                    throw new Error("Max attempt exceeded")
+                    throw new Error("Error")
                 }
             }
         }
+    }
+}
+
+const timeout = (timeout, callback)=>{
+    return async (...args)=>{
+        const timeoutPromise = new Promise((_, reject)=>{
+            setTimeout(reject(new Error('timeout')), timeout)
+        })
+        try{
+            Promise.race([timeoutPromise, callback(...args)])
+        }catch(error){
+            throw error;
+        }        
     }
 }
 
