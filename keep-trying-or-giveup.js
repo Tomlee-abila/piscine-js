@@ -14,10 +14,10 @@ const retry = (count, callback) =>{
     }
 }
 
-const timeout = (timeout, callback)=>{
+const timeout = (delay, callback)=>{
     return async (...args)=>{
         const timeoutPromise = new Promise((_, reject)=>{
-            setTimeout(reject(new Error('timeout')), timeout)
+            setTimeout(reject(new Error('timeout')), delay)
         })
         try{
             return await Promise.race([timeoutPromise, callback(...args)])
