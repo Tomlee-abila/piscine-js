@@ -4,10 +4,10 @@ const retry = (count, callback) =>{
         while(attempts <= count){
             try{
                 return await callback(...args)
-            }catch{
+            }catch(error){
                 attempts++
                 if (attempts > count){
-                    throw new Error("Error")
+                    throw error
                 }
             }
         }
