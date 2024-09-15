@@ -1,29 +1,19 @@
 function interpolation({ step, start, end, callback, duration }) {
     const interval = duration / step;
     const delta = (end - start)/step;
-    let currentStep = 0;
     let d = start
+    let distance = interval
 
     const intervalId = setInterval(() => {
         const t = d;
-        start += interval
-        
-
-        callback([t, start]);
+        callback([t, distance]);
         d += delta
-        currentStep++;
-        
 
-        if (start >= duration) {
+        if (distance == duration) {
             clearInterval(intervalId);
         }
+        distance += interval
     }, interval);
 }
 
-// interpolation({
-//     step: 5,
-//     start: 0,
-//     end: 1,
-//     callback: ([x, y]) => console.log(`[${x.toFixed(2)}, ${y.toFixed(2)}]`),
-//     duration: 10
-// });
+interpolation({step: 3, start: 1, end: 2, duration: 10, callback: ([x, y]) => console.log(`[${x.toFixed(2)}, ${y.toFixed(2)}]`)});
