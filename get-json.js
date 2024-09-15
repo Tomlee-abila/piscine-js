@@ -14,7 +14,7 @@ async function getJSON  (path, params = {}) {
         if (data.error) {
             throw new Error(data.error);
         }
-        return data;
+        return data.data;
     }catch(error){
         throw error;
     }
