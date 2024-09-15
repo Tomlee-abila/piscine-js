@@ -1,11 +1,9 @@
 const all = (obj)=>{
-    values = Object.values(obj)
     keys = Object.keys(obj)
     if (obj == {})return obj
-    let t = "hello"
-    result = {}
-    for (let i = 0; i < values.length; i++){        
-        result[keys[i]] = obj[keys[i]]()
+    result = []
+    for (let i = 0; i < keys.length; i++){        
+        result.push(obj[keys[i]]())
     }
     return result
 }
