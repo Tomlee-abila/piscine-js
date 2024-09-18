@@ -5,23 +5,24 @@ import path from "path";
 const PORT = 5000;
 const GUESTS_DIR = "guests";
 
+await fs.mkdir(GUESTS_DIR, { recursive: true });
+
 const server = http.createServer(async (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   if (req.method !== "POST") {
-    return sendResponse(res, 405, { error: "Method Not Allowed" });
+    return sendResponse(res, 500, { error: "server failed" });
   }
 
   const guestName = req.url?.substring(1);
   if (!guestName) {
-    return sendResponse(res, 400, { error: "Guest name is required" });
+    return sendResponse(res, 500, { error: "server failed" });
   }
 
   try {
-    await fs.mkdir(GUESTS_DIR, { recursive: true });
     const body = await getRequestBody(req);
     const filePath = path.join(GUESTS_DIR, `${guestName}.json`);
-    
+
     await fs.writeFile(filePath, body);
 
     let responseData;
@@ -34,7 +35,7 @@ const server = http.createServer(async (req, res) => {
     sendResponse(res, 201, responseData);
   } catch (err) {
     console.error("Error:", err);
-    sendResponse(res, 500, { error: "Server failed" });
+    sendResponse(res, 500, { error: "server failed" });
   }
 });
 
