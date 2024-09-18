@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 
-let dir = process.argv[2] || process.argv[1]; // Use provided argument or script name
+let dir = process.argv[2] || process.argv[1]; 
 
 try {
   const files = await fs.readdir(dir, "utf8");
@@ -19,7 +19,7 @@ try {
   namesArray.sort();
   const output = namesArray.map((name, index) => `${index + 1}. ${name}`).join("\n");
   await fs.writeFile("vip.txt", output);
-  console.log(output); // Print the result to console
+  console.log(output); 
 } catch (err) {
   console.error("Error:", err);
 }
