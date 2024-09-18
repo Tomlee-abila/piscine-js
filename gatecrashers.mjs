@@ -1,15 +1,18 @@
 import http from "http";
-import { readFile, writeFile } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import { Buffer } from "node:buffer";
 
 const serverHost = "localhost";
 const serverPort = 5000;
 const guestsDirectory = "guests";
 const authorizedUsers = ["Caleb_Squires", "Tyrique_Dalton", "Rahima_Young"];
+const secretPassword = "abracadabra";
+
+await mkdir(guestsDirectory, { recursive: true });
 
 const handleGuestData = async (request, response) => {
   response.setHeader("Content-Type", "application/json");
-  
+
   const guestFileName = `${request.url.slice(1)}.json`;
 
   const sendErrorResponse = (statusCode, message) => {
@@ -21,13 +24,14 @@ const handleGuestData = async (request, response) => {
 
   const authorizationHeader = request.headers["authorization"];
   if (!authorizationHeader) {
-    return sendErrorResponse(401, "No credentials found");
+    return sendErrorResponse(401, "Authorization Required");
   }
 
   const credentials = Buffer.from(authorizationHeader.slice(6), "base64").toString().split(":");
-  if (!authorizedUsers.includes(credentials[0]) || credentials[1] !== "abracadabra") {
+  if (!authorizedUsers.includes(credentials[0]) || credentials[1] !== secretPassword) {
     return sendErrorResponse(401, "Authorization Required");
   }
+
   let requestBody = '';
   request.on('data', chunk => {
     requestBody += chunk.toString();
@@ -36,7 +40,7 @@ const handleGuestData = async (request, response) => {
   request.on('end', async () => {
     try {
       await writeFile(`${guestsDirectory}/${guestFileName}`, requestBody);
-      response.writeHead(201, {
+      response.writeHead(200, {
         "Content-Length": Buffer.byteLength(requestBody),
       }).end(requestBody);
     } catch (error) {
